@@ -48,6 +48,7 @@ local parse_latex = function(snippet)
 	})
 
 	local png_result = vim.fn.tempname()
+	png_result = png_result .. ".png"
 	-- TODO: Make the conversions async via `on_exit`
 	vim.fn.jobwait({
 		vim.fn.jobstart(
