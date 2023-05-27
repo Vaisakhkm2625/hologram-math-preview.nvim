@@ -1,9 +1,11 @@
 # hello 
 hello 
 
+
 $$
-\frac{2}{3}
+\sqrt{\frac{2}{3}}
 $$
+
 
 $$
 \begin{bmatrix}
@@ -16,7 +18,7 @@ $$
 
 # hello 
 
-lua require("hologram-math-preview").show_latex("$$\frac{\sqrt{2}}{2^3}$$")
+`lua require("hologram-math-preview").show_latex("$$\frac{\sqrt{2}}{2^3}$$")`
 
 
 # hello 
