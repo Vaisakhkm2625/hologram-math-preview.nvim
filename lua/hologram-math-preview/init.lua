@@ -1,7 +1,4 @@
--- new api
 -- require("hologram.image"):new("./notes/img/datastructuretypes.png", {}):display(1, 1, vim.api.nvim_get_current_buf())
-
---old api (current)
 
 local source = "/home/vaisakh/notes/img/datastructuretypes.png"
 local buf = vim.api.nvim_get_current_buf()
