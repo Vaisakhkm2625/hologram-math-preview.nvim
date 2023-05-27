@@ -1,13 +1,19 @@
--- require("hologram.image"):new("./notes/img/datastructuretypes.png", {}):display(1, 1, vim.api.nvim_get_current_buf())
+--local source = "/home/vaisakh/notes/img/datastructuretypes.png"
 
-local source = "/home/vaisakh/notes/img/datastructuretypes.png"
-local buf = vim.api.nvim_get_current_buf()
-local image = require("hologram.image"):new(source, {})
+local hologram_math_preview = {}
+local createlateximg = require("hologram-math-preview.createlatex")
 
--- Image should appear below this line, then disappear after 5 seconds
+function hologram_math_preview.show_image()
+	imagepath = createlateximg.parse_latex("$$2^3$$")
 
-image:display(11, 0, buf, {})
+	local buf = vim.api.nvim_get_current_buf()
+	local image = require("hologram.image"):new(imagepath, {})
 
-vim.defer_fn(function()
-	image:delete(0, { free = true })
-end, 5000)
+	image:display(11, 0, buf, {})
+
+	vim.defer_fn(function()
+		image:delete(0, { free = true })
+	end, 5000)
+end
+
+return hologram_math_preview
