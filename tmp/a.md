@@ -16,7 +16,7 @@ $$
 
 # hello 
 
-
+lua require("hologram-math-preview").show_latex("$$\frac{\sqrt{2}}{2^3}$$")
 
 
 # hello 

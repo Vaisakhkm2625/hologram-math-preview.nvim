@@ -3,13 +3,28 @@
 local hologram_math_preview = {}
 local createlateximg = require("hologram-math-preview.createlatex")
 
-function hologram_math_preview.show_image()
-	imagepath = createlateximg.parse_latex("$$2^3$$")
+function hologram_math_preview.show_sample_image()
+	local imagepath = createlateximg.parse_latex("$$\\frac{\\sqrt{2}}{2^3}$$")
 
 	local buf = vim.api.nvim_get_current_buf()
 	local image = require("hologram.image"):new(imagepath, {})
 
 	image:display(11, 0, buf, {})
+
+	vim.defer_fn(function()
+		image:delete(0, { free = true })
+	end, 5000)
+end
+
+-- :lua require("hologram-math-preview").show_latex_equation(15,20,"$$\\frac{\\sqrt{2}}{2^3}$$")
+
+function hologram_math_preview.show_latex_equation(row, col, equation)
+	local imagepath = createlateximg.parse_latex(equation)
+
+	local buf = vim.api.nvim_get_current_buf()
+	local image = require("hologram.image"):new(imagepath, {})
+
+	image:display(row, col, buf, {})
 
 	vim.defer_fn(function()
 		image:delete(0, { free = true })
