@@ -12,6 +12,7 @@ local create_latex_document = function(snippet)
 		return
 	end
 
+	-- TODO:use \\begin only for single line statements
 	local content = table.concat({
 		"\\documentclass[12pt]{standalone}",
 		"\\usepackage{amsmath}",
@@ -19,8 +20,8 @@ local create_latex_document = function(snippet)
 		"\\begin{document}",
 		--"\\begin{align}",
 		snippet,
-		"\\end{align}",
-		--"\\end{document}",
+		--"\\end{align}",
+		"\\end{document}",
 	}, "\n")
 
 	tempfile:write(content)
