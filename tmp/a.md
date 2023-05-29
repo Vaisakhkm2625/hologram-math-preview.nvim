@@ -1,12 +1,6 @@
 # hello 
 hello 
 
-
-$$
-\sqrt{\frac{2}{3}}
-$$
-
-
 $$
 \begin{bmatrix}
     x_{11}       & x_{12} & x_{13} & \dots & x_{1n} \\
@@ -16,6 +10,14 @@ $$
 \end{bmatrix}
 $$
 
+this is a asdfsdfa
+
+$$
+\sqrt{\frac{2}{3}}
+$$
+
+
+
 # hello 
 
 `lua require("hologram-math-preview").show_latex("$$\frac{\sqrt{2}}{2^3}$$")`
@@ -24,3 +26,15 @@ $$
 # hello 
 
 asdf
+
+asdfsdfa
+asdfsdfa
+asdfsdfa
+asdfsdfa
+asdfsdfa
+asdfsdfa
+asdfsdfa
+asdfsdfa
+asdfsdfa
+asdfsdfa
+asdfsdfa

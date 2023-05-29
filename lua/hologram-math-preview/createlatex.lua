@@ -17,10 +17,10 @@ local create_latex_document = function(snippet)
 		"\\usepackage{amsmath}",
 		"\\usepackage{amssymb}",
 		"\\begin{document}",
-		"\\begin{align}",
+		--"\\begin{align}",
 		snippet,
 		"\\end{align}",
-		"\\end{document}",
+		--"\\end{document}",
 	}, "\n")
 
 	tempfile:write(content)
