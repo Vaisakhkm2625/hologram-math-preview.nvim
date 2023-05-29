@@ -1,6 +1,7 @@
 # hello 
 hello 
 
+
 $$
 \begin{bmatrix}
     x_{11}       & x_{12} & x_{13} & \dots & x_{1n} \\
@@ -10,11 +11,15 @@ $$
 \end{bmatrix}
 $$
 
+$$
+\sqrt{\frac{2}{3}}
+$$
 this is a asdfsdfa
 
 $$
 \sqrt{\frac{2}{3}}
 $$
+
 
 
 

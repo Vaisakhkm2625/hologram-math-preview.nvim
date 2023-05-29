@@ -4,6 +4,21 @@ local hologram_math_preview = {}
 local createlateximg = require("hologram-math-preview.createlatex")
 local latexcapture = require("hologram-math-preview.markdowncapture")
 
+--[[
+
+equation table
+
+{
+equation: (str) enitre equation as string including $$
+is_generic_command: (bool) generic_command -> \frac, generic environment-> begin
+imgpath: (str) image generated if any
+end: (int) last row
+inline: bool
+}
+
+
+]]
+
 function hologram_math_preview.show_sample_image()
 	local imagepath = createlateximg.parse_latex("$$\\frac{\\sqrt{2}}{2^3}$$")
 
@@ -33,7 +48,7 @@ function hologram_math_preview.show_latex_equation(row, col, equation)
 end
 
 function hologram_math_preview.show_first_eq()
-	local eq = latexcapture.first_eq()
+	local eq = latexcapture.equation_array()
 	hologram_math_preview.show_latex_equation(eq.row + 1, 2, eq.equation)
 end
 
