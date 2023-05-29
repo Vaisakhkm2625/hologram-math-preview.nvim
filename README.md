@@ -15,7 +15,9 @@ demo - current progress
 
 lazy.nvim
 ```lua
-TODO
+
+{'Vaisakhkm2625/hologram-math-preview.nvim'}
+
 ```
 ## TODOs
 
