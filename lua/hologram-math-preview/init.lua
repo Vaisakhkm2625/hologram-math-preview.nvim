@@ -42,14 +42,22 @@ function hologram_math_preview.show_latex_equation(row, col, equation)
 
 	image:display(row, col, buf, {})
 
-	vim.defer_fn(function()
-		image:delete(0, { free = true })
-	end, 5000)
+	-- vim.defer_fn(function()
+	-- 	image:delete(0, { free = true })
+	-- end, 5000)
 end
 
 function hologram_math_preview.show_first_eq()
-	local eq = latexcapture.equation_array()
+	local eq = latexcapture.get_equation_array()
 	hologram_math_preview.show_latex_equation(eq.row + 1, 2, eq.equation)
+end
+
+function hologram_math_preview.show_all_eq()
+	local eqarray = latexcapture.get_equation_array()
+
+	for _, eq in ipairs(eqarray) do
+		hologram_math_preview.show_latex_equation(eq.last_row, 0, eq.equation)
+	end
 end
 
 return hologram_math_preview
