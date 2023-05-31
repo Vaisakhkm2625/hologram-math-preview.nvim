@@ -57,27 +57,14 @@ function latexcapture.get_equation_array()
 	local language_tree = vim.treesitter.get_parser(bfnu, "latex")
 	local syntax_tree = language_tree:parse()
 	local root = syntax_tree[1]:root()
-	local generic_commands_query = vim.treesitter.query.parse("latex", "(displayed_equation(generic_command)) @gc")
-	local generic_environments_query =
-		vim.treesitter.query.parse("latex", "(displayed_equation(generic_environment)) @ge")
+	local inline_formula_query = vim.treesitter.query.parse("latex", "(inline_formula) @inf")
 
-	for id, match, metadata in generic_commands_query:iter_matches(root, bfnu, root:start(), root:end_()) do
+	for id, match, metadata in inline_formula_query:iter_matches(root, bfnu, root:start(), root:end_()) do
 		local eq = {}
 		eq.equation = vim.treesitter.get_node_text(match[1], bfnu)
-		eq.is_generic_command = true
 		_, _, eq.last_row, _ = match[1]:range()
-		-- print(eq.last_row .. " " .. vim.treesitter.get_node_text(match[1], bfnu))
+		print(eq.last_row .. " " .. vim.treesitter.get_node_text(match[1], bfnu))
 		--- eq.node = match[1]
-		table.insert(equation_array, eq)
-	end
-
-	print("environment")
-	for id, match, metadata in generic_environments_query:iter_matches(root, bfnu, root:start(), root:end_()) do
-		local eq = {}
-		eq.equation = vim.treesitter.get_node_text(match[1], bfnu)
-		_, _, eq.last_row, _ = match[1]:range()
-		-- print(vim.treesitter.get_node_text(match[1], bfnu))
-		-- eq.node = match[1]
 		table.insert(equation_array, eq)
 	end
 

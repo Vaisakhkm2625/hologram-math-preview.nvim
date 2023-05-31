@@ -43,25 +43,24 @@ local parse_latex = function(snippet)
 	local cwd = vim.fn.fnamemodify(document_name, ":h")
 	vim.fn.jobwait({
 		vim.fn.jobstart(
-			"latex  --interaction=nonstopmode --output-dir=" .. cwd .. " --output-format=dvi " .. document_name,
+			-- "latex  --interaction=nonstopmode --output-dir=" .. cwd .. " --output-format=dvi " .. document_name,
+			"tectonic "
+				.. document_name
+				.. " --outdir="
+				.. cwd,
 			{ cwd = cwd }
 		),
 	})
 
 	local png_result = vim.fn.tempname()
-	png_result = png_result .. ".png"
+
 	-- TODO: Make the conversions async via `on_exit`
+
+	local comnd = "pdftocairo -transp -singlefile " .. document_name .. ".pdf -png " .. png_result
+
+	print(comnd)
 	vim.fn.jobwait({
-		vim.fn.jobstart(
-			"dvipng -D "
-				.. tostring(dpi)
-				.. " -T tight -bg Transparent -fg 'cmyk 0.00 0.04 0.21 0.02' -o "
-				.. png_result
-				.. " "
-				.. document_name
-				.. ".dvi",
-			{ cwd = vim.fn.fnamemodify(document_name, ":h") }
-		),
+		vim.fn.jobstart(comnd, { cwd = vim.fn.fnamemodify(document_name, ":h") }),
 	})
 
 	-- TODO: for debuging
