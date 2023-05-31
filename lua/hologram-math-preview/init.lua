@@ -54,9 +54,10 @@ end
 
 function hologram_math_preview.show_all_eq()
 	local eqarray = latexcapture.get_equation_array()
+	print(vim.inspect(eqarray))
 
 	for _, eq in ipairs(eqarray) do
-		hologram_math_preview.show_latex_equation(eq.last_row, 0, eq.equation)
+		hologram_math_preview.show_latex_equation(eq.last_row + 1, 0, eq.equation)
 	end
 end
 

@@ -65,7 +65,7 @@ local parse_latex = function(snippet)
 
 	-- TODO: for debuging
 	print(png_result)
-	return png_result
+	return png_result .. ".png"
 end
 
 return {
