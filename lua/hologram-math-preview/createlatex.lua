@@ -12,15 +12,14 @@ local create_latex_document = function(snippet)
 		return
 	end
 
-	-- TODO:use \\begin only for single line statements
 	local content = table.concat({
 		"\\documentclass[12pt]{standalone}",
 		"\\usepackage{amsmath}",
 		"\\usepackage{amssymb}",
+		"\\usepackage{xcolor}",
 		"\\begin{document}",
-		--"\\begin{align}",
+		"\\color{white}", -- TODO: Later expose this as a user option
 		snippet,
-		--"\\end{align}",
 		"\\end{document}",
 	}, "\n")
 
