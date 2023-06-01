@@ -1,4 +1,4 @@
-# hologram-math-preview.nvim
+# hologram-math-preview.nvim (⚠️ WIP)
 
 A simple Neovim plugin for previewing latex equations in markdown/orgmode/norg/tex files 
 
