@@ -20,10 +20,7 @@ $
 \sqrt{\frac{2}{3}}
 $
 
-
-
-
-# copied from nabla
+#  test copied from nabla
 
 $a^2 + b^2 + c^2$
 

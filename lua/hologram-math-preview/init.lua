@@ -5,32 +5,15 @@ local createlateximg = require("hologram-math-preview.createlatex")
 local latexcapture = require("hologram-math-preview.markdowncapture")
 
 --[[
-
 equation table
 
 {
 equation: (str) enitre equation as string including $$
-is_generic_command: (bool) generic_command -> \frac, generic environment-> begin
 imgpath: (str) image generated if any
 end: (int) last row
 inline: bool
 }
-
-
 ]]
-
-function hologram_math_preview.show_sample_image()
-	local imagepath = createlateximg.parse_latex("$$\\frac{\\sqrt{2}}{2^3}$$")
-
-	local buf = vim.api.nvim_get_current_buf()
-	local image = require("hologram.image"):new(imagepath, {})
-
-	image:display(11, 0, buf, {})
-
-	vim.defer_fn(function()
-		image:delete(0, { free = true })
-	end, 5000)
-end
 
 -- :lua require("hologram-math-preview").show_latex_equation(15,20,"$$\\frac{\\sqrt{2}}{2^3}$$")
 
@@ -42,23 +25,35 @@ function hologram_math_preview.show_latex_equation(row, col, equation)
 
 	image:display(row, col, buf, {})
 
+	return imagepath
+
 	-- vim.defer_fn(function()
 	-- 	image:delete(0, { free = true })
 	-- end, 5000)
 end
 
-function hologram_math_preview.show_first_eq()
-	local eq = latexcapture.get_equation_array()
-	hologram_math_preview.show_latex_equation(eq.row + 1, 2, eq.equation)
-end
-
 function hologram_math_preview.show_all_eq()
+	print("Kindly wait until all equations are parsed...")
+
 	local eqarray = latexcapture.get_equation_array()
 	print(vim.inspect(eqarray))
 
 	for _, eq in ipairs(eqarray) do
-		hologram_math_preview.show_latex_equation(eq.last_row + 1, 0, eq.equation)
+		eq.imgpath = hologram_math_preview.show_latex_equation(eq.last_row + 1, 0, eq.equation)
 	end
+end
+
+function hologram_math_preview.show_sample_image()
+	local imagepath = createlateximg.parse_latex("$\\frac{\\sqrt{2}}{2^3}$")
+
+	local buf = vim.api.nvim_get_current_buf()
+	local image = require("hologram.image"):new(imagepath, {})
+
+	image:display(11, 0, buf, {})
+
+	vim.defer_fn(function()
+		image:delete(0, { free = true })
+	end, 5000)
 end
 
 return hologram_math_preview
