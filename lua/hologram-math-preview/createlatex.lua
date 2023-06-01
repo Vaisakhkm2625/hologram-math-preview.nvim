@@ -55,11 +55,11 @@ local parse_latex = function(snippet)
 
 	-- TODO: Make the conversions async via `on_exit`
 
-	local comnd = "pdftocairo -transp -singlefile " .. document_name .. ".pdf -png " .. png_result
-
-	print(comnd)
 	vim.fn.jobwait({
-		vim.fn.jobstart(comnd, { cwd = vim.fn.fnamemodify(document_name, ":h") }),
+		vim.fn.jobstart(
+			"pdftocairo -transp -singlefile " .. document_name .. ".pdf -png " .. png_result,
+			{ cwd = vim.fn.fnamemodify(document_name, ":h") }
+		),
 	})
 
 	-- TODO: for debuging
