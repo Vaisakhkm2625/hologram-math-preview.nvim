@@ -33,7 +33,7 @@ function hologram_math_preview.show_latex_equation(row, col, equation)
 end
 
 function hologram_math_preview.show_all_eq()
-	print("Kindly wait until all equations are parsed...")
+	vim.notify("Kindly wait until all equations are parsed...")
 
 	local eqarray = latexcapture.get_equation_array()
 	print(vim.inspect(eqarray))
