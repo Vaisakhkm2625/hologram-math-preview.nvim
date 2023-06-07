@@ -1,7 +1,7 @@
 -- copy pasta - vhirryo
 -- https://github.com/nvim-neorg/neorg/commit/73ca7b63c79a76d5cd8a3f0b39c5d171c1406fdc
 
-local M
+local M = {}
 
 local dpi = 300
 
