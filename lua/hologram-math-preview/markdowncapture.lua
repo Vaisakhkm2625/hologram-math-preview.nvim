@@ -1,4 +1,4 @@
-local latexcapture = {}
+local M = {}
 
 local function printtable(value)
 	print(vim.inspect(value))
@@ -14,7 +14,7 @@ end
 }
 ]]
 
-function latexcapture.get_equation_array()
+function M.get_equation_array()
 	local bfnu = vim.api.nvim_get_current_buf()
 	local equation_array = {}
 	local node_array = {}
@@ -36,4 +36,4 @@ function latexcapture.get_equation_array()
 	return equation_array
 end
 
-return latexcapture
+return M

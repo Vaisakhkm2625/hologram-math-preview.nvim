@@ -1,6 +1,8 @@
 -- copy pasta - vhirryo
 -- https://github.com/nvim-neorg/neorg/commit/73ca7b63c79a76d5cd8a3f0b39c5d171c1406fdc
 
+local M
+
 local dpi = 300
 
 local create_latex_document = function(snippet)
@@ -32,7 +34,7 @@ end
 -- Returns a handle to an image containing
 -- the rendered snippet.
 -- This handle can then be delegated to an external renderer.
-local parse_latex = function(snippet)
+M.parse_latex = function(snippet)
 	local document_name = create_latex_document(snippet)
 
 	if not document_name then
@@ -67,6 +69,4 @@ local parse_latex = function(snippet)
 	return png_result .. ".png"
 end
 
-return {
-	parse_latex = parse_latex,
-}
+return M
