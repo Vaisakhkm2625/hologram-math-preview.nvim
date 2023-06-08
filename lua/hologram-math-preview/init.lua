@@ -3,6 +3,7 @@
 local hologram_math_preview = {}
 local createlateximg = require("hologram-math-preview.createlatex")
 local latexcapture = require("hologram-math-preview.markdowncapture")
+local equations = require("hologram-math-preview.equations")
 
 --[[
 equation table
@@ -35,14 +36,25 @@ end
 function hologram_math_preview.show_all_eq()
 	vim.notify("Kindly wait until all equations are parsed...")
 
-	local eqarray = latexcapture.get_equation_array()
-	print(vim.inspect(eqarray))
+	latexcapture.extract_all_equations()
+	print(vim.inspect(equations))
 
-	for _, eq in ipairs(eqarray) do
-		eq.imgpath = hologram_math_preview.show_latex_equation(eq.last_row + 1, 0, eq.equation)
-	end
+	--	for _, eq in ipairs(eqarray) do
+	--		eq.imgpath = hologram_math_preview.show_latex_equation(eq.last_row + 1, 0, eq.equation)
+	--	end
 end
 
+-- function hologram_math_preview.show_all_eq()
+-- 	vim.notify("Kindly wait until all equations are parsed...")
+--
+-- 	local eqarray = latexcapture.extract_all_equations()
+-- 	print(vim.inspect(eqarray))
+--
+-- 	for _, eq in ipairs(eqarray) do
+-- 		eq.imgpath = hologram_math_preview.show_latex_equation(eq.last_row + 1, 0, eq.equation)
+-- 	end
+-- end
+--
 function hologram_math_preview.show_sample_image()
 	local imagepath = createlateximg.parse_latex("$\\frac{\\sqrt{2}}{2^3}$")
 
