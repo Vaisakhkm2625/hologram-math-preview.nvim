@@ -39,9 +39,9 @@ function hologram_math_preview.show_all_eq()
 	latexcapture.extract_all_equations()
 	print(vim.inspect(equations))
 
-	--	for _, eq in ipairs(eqarray) do
-	--		eq.imgpath = hologram_math_preview.show_latex_equation(eq.last_row + 1, 0, eq.equation)
-	--	end
+	for _, eq in ipairs(equations.equations) do
+		eq.imgpath = hologram_math_preview.show_latex_equation(eq.location[3] + 1, 0, eq.current_equation)
+	end
 end
 
 -- function hologram_math_preview.show_all_eq()
