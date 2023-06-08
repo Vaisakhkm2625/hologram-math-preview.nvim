@@ -40,7 +40,13 @@ M.add = function(buf, ir, ic, fr, fc)
 
 	eq.current_equation = get_text_from_exmarks(buf, M.namespace, eq.id)
 
-	table.insert(M.equations, eq)
+	M.equations[eq.id] = eq
 end
 
+-- 	for i, eq in pairs(M.equations) do
+-- 		print("-----------")
+-- 		print(vim.inspect(eq))
+-- 	end
+-- end
+--
 return M
