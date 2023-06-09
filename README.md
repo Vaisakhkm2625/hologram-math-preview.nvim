@@ -21,10 +21,10 @@ lazy.nvim
 ```
 ## TODOs
 
-- [ ] find pos of equations and place images
-  - [ ] equation for the first q
-- [ ] keep track of images generated, keep it in memory and don't generate each time (adding a metadate to treesitter)
-- [ ] scrolling with the buffer, 
+- [x] find pos of equations and place images
+  - [x] equation for the first q
+- [x] keep track of images generated, keep it in memory and don't generate each time 
+- [x] scrolling with the buffer, (taken care by hologram itself)
 - [ ] exposing options to configure custom tex engine and custom preamble
 - [ ] instructions
 
