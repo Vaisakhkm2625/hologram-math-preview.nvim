@@ -10,14 +10,13 @@ $
     x_{d1}       & x_{d2} & x_{d3} & \dots & x_{dn}
 \end{bmatrix}
 $
-
 $
-\sqrt{\frac{2}{3}}
+\sqrt{\frac{4}{3}}
 $
 this is a asdfsdfa
 
 $
-\sqrt{\frac{2}{3}}
+\sqrt{\frac{4}{3}}
 $
 
 #  test copied from nabla
@@ -81,4 +80,4 @@ $\frac{1}{2\xi \sqrt{1+\xi^2}}$
 
 $1\: + 2$
 
-
+hello

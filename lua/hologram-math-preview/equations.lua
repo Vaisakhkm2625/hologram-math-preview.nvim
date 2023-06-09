@@ -14,6 +14,7 @@
 ]]
 
 local utils = require("hologram-math-preview.utils")
+local createlatex = require("hologram-math-preview.createlatex")
 
 local M = {}
 M._lastUsedID = 0
@@ -27,6 +28,8 @@ M.add = function(buf, sr, sc, er, ec)
 	eq.buf = buf
 
 	eq.location = { sr, sc, er, ec }
+
+	--set extmark
 	vim.api.nvim_buf_set_extmark(buf, M.namespace, sr, sc, { id = eq.id, end_row = er, end_col = ec })
 
 	eq.current_equation = utils.get_text_from_exmarks(buf, M.namespace, eq.id)
@@ -35,9 +38,9 @@ M.add = function(buf, sr, sc, er, ec)
 end
 
 M.update_equation = function(equation)
-	-- vim.api.nvim_buf_set_extmark(buf, M.namespace, ir, ic, { id = eq.id, end_row = fr, end_col = fc })
 	equation.current_equation = utils.get_text_from_exmarks(equation.buf, M.namespace, equation.id)
 	equation.location = utils.get_extmark_location(equation.buf, M.namespace, equation.id)
+	createlatex.update_latex_equation_image(equation)
 end
 
 -- 	for i, eq in pairs(M.equations) do

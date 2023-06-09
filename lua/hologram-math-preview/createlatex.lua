@@ -1,8 +1,6 @@
 -- copy pasta - vhirryo
 -- https://github.com/nvim-neorg/neorg/commit/73ca7b63c79a76d5cd8a3f0b39c5d171c1406fdc
 
-local equations = require("hologram-math-preview.equations")
-
 local M = {}
 
 local dpi = 300
@@ -31,7 +29,7 @@ local create_latex_document = function(equation)
 	tempfile:write(content)
 	tempfile:close()
 
-	equation.tmpfile = tempfile
+	equation.documentname = tempfile
 	return tempname
 end
 
@@ -72,6 +70,22 @@ M.parse_latex = function(equation)
 	print(png_result)
 
 	return png_result .. ".png"
+end
+
+M.show_latex_equation_image = function(equation)
+	local imagepath = M.parse_latex(equation)
+
+	local buf = vim.api.nvim_get_current_buf()
+
+	equation.image = require("hologram.image"):new(imagepath, {})
+	equation.image:display(equation.location[3] + 1, 0, buf, {})
+end
+
+M.update_latex_equation_image = function(equation)
+	equation.image:delete(0, { free = true })
+	local imagepath = M.parse_latex(equation)
+	equation.image = require("hologram.image"):new(imagepath, {})
+	equation.image:display(equation.location[3] + 1, 0, equation.buf, {})
 end
 
 return M
