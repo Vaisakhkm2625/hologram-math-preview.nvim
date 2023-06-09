@@ -44,33 +44,30 @@ M.parse_latex = function(equation)
 	end
 
 	local cwd = vim.fn.fnamemodify(document_name, ":h")
-	vim.fn.jobwait({
-		vim.fn.jobstart(
-			-- "latex  --interaction=nonstopmode --output-dir=" .. cwd .. " --output-format=dvi " .. document_name,
-			"tectonic "
-				.. document_name
-				.. " --outdir="
-				.. cwd,
-			{ cwd = cwd }
-		),
-	})
-
 	local png_result = vim.fn.tempname()
-
-	-- TODO: Make the conversions async via `on_exit`
-
-	vim.fn.jobwait({
-		vim.fn.jobstart(
-			"pdftocairo -transp -singlefile " .. document_name .. ".pdf -png " .. png_result,
-			{ cwd = vim.fn.fnamemodify(document_name, ":h") }
-		),
-	})
-
+	vim.fn.jobstart(
+		-- "latex  --interaction=nonstopmode --output-dir=" .. cwd .. " --output-format=dvi " .. document_name,
+		"tectonic "
+			.. document_name
+			.. " --outdir="
+			.. cwd,
+		{
+			cwd = cwd,
+			on_exit = function()
+				vim.fn.jobstart("pdftocairo -transp -singlefile " .. document_name .. ".pdf -png " .. png_result, {
+					cwd = vim.fn.fnamemodify(document_name, ":h"),
+					on_exit = function()
+						print(vim.inspect(equation))
+						print(document_name .. "generated")
+						print(png_result .. "generated")
+						equation.imagepath = png_result .. ".png"
+						M.set_equation_image(equation)
+					end,
+				})
+			end,
+		}
+	)
 	-- TODO: for debuging
-	print(png_result)
-
-	equation.imagepath = png_result .. ".png"
-	M.set_equation_image(equation)
 
 	return png_result .. ".png"
 end
