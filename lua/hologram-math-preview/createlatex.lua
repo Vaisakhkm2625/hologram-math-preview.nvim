@@ -69,16 +69,19 @@ M.parse_latex = function(equation)
 	-- TODO: for debuging
 	print(png_result)
 
+	equation.imagepath = png_result .. ".png"
+	M.set_equation_image(equation)
+
 	return png_result .. ".png"
 end
 
+M.set_equation_image = function(equation)
+	equation.image = require("hologram.image"):new(equation.imagepath, {})
+	equation.image:display(equation.location[3] + 1, 0, equation.buf, {})
+end
+
 M.show_latex_equation_image = function(equation)
-	local imagepath = M.parse_latex(equation)
-
-	local buf = vim.api.nvim_get_current_buf()
-
-	equation.image = require("hologram.image"):new(imagepath, {})
-	equation.image:display(equation.location[3] + 1, 0, buf, {})
+	M.parse_latex(equation)
 end
 
 M.update_latex_equation_image = function(equation)
