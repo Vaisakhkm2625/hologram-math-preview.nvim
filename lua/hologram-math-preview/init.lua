@@ -19,7 +19,7 @@ inline: bool
 -- :lua require("hologram-math-preview").show_latex_equation(15,20,"$$\\frac{\\sqrt{2}}{2^3}$$")
 
 function hologram_math_preview.show_latex_equation(eq)
-	local imagepath = createlateximg.parse_latex(eq.id)
+	local imagepath = createlateximg.parse_latex(eq)
 
 	local buf = vim.api.nvim_get_current_buf()
 	local image = require("hologram.image"):new(imagepath, {})
@@ -29,6 +29,11 @@ function hologram_math_preview.show_latex_equation(eq)
 	-- vim.defer_fn(function()
 	-- 	image:delete(0, { free = true })
 	-- end, 5000)
+end
+
+function hologram_math_preview.update_first_equation()
+	equations.update_equation(equations.equations[2])
+	hologram_math_preview.show_latex_equation(equations.equations[2])
 end
 
 function hologram_math_preview.show_all_eq()

@@ -7,10 +7,10 @@ local M = {}
 
 local dpi = 300
 
-local create_latex_document = function(equationid)
-	local snippet = equations.equations[equationid].current_equation
+local create_latex_document = function(equation)
 	local tempname = vim.fn.tempname()
 
+	local snippet = equation.current_equation
 	local tempfile = io.open(tempname, "w")
 
 	if not tempfile then
@@ -31,14 +31,15 @@ local create_latex_document = function(equationid)
 	tempfile:write(content)
 	tempfile:close()
 
+	equation.tmpfile = tempfile
 	return tempname
 end
 
 -- Returns a handle to an image containing
 -- the rendered snippet.
 -- This handle can then be delegated to an external renderer.
-M.parse_latex = function(equationid)
-	local document_name = create_latex_document(equationid)
+M.parse_latex = function(equation)
+	local document_name = create_latex_document(equation)
 
 	if not document_name then
 		return
