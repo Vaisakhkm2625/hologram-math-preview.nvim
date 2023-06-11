@@ -37,6 +37,11 @@ M.add = function(buf, sr, sc, er, ec)
 	M.equations[eq.id] = eq
 end
 
+M.remove = function(equation)
+	vim.api.nvim_buf_del_extmark(equation.buf, M.namespace, equation.id)
+	equation.image:delete(0, { free = true })
+end
+
 M.update_equation = function(equation)
 	equation.current_equation = utils.get_text_from_exmarks(equation.buf, M.namespace, equation.id)
 	equation.location = utils.get_extmark_location(equation.buf, M.namespace, equation.id)

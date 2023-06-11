@@ -23,6 +23,13 @@ function hologram_math_preview.update_first_equation()
 	createlatex.show_latex_equation_image(equations.equations[2])
 end
 
+function hologram_math_preview.remove_first_equation()
+	print(vim.inspect(equations.equations[2]))
+	equations.remove(equations.equations[2])
+	print(vim.inspect(equations.equations[2]))
+	-- createlatex.show_latex_equation_image(equations.equations[2])
+end
+
 function hologram_math_preview.show_all_eq()
 	vim.notify("Kindly wait until all equations are parsed...")
 
