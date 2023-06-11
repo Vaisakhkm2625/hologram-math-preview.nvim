@@ -7,9 +7,7 @@ A simple Neovim plugin for previewing latex equations in markdown/orgmode/norg/t
 
 demo - current progress
 
-[hologram-math-preview-demo.webm](https://github.com/Vaisakhkm2625/hologram-math-preview.nvim/assets/68694876/8f0f6610-2fa3-48c2-8e87-1cdecd7a2b03)
-
-[hologram-math-preview-demo-update.webm](https://github.com/Vaisakhkm2625/hologram-math-preview.nvim/assets/68694876/2c3848f8-61ce-4028-bdea-eb074ab9e93f)
+--
 
 ## Installation
 
