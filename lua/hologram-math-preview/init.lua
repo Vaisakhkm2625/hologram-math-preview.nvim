@@ -4,6 +4,7 @@ local hologram_math_preview = {}
 local createlatex = require("hologram-math-preview.createlatex")
 local latexcapture = require("hologram-math-preview.markdowncapture")
 local equations = require("hologram-math-preview.equations")
+local utils = require("hologram-math-preview.utils")
 
 --[[
 equation table
@@ -64,6 +65,16 @@ function hologram_math_preview.show_sample_image()
 	--	vim.defer_fn(function()
 	--		image:delete(0, { free = true })
 	--	end, 5000)
+end
+
+function hologram_math_preview.update_under_cursor()
+	local cursor = vim.api.nvim_win_get_cursor(0)
+	-- print(vim.inspect(cursor))
+	local bufnr = vim.api.nvim_get_current_buf()
+	local exmark_id = utils.get_extmarks_around_pos(bufnr, equations.namespace, cursor[1], cursor[2])
+	-- print(exmark_id)
+	equations.update_equation(equations.equations[exmark_id])
+	createlatex.show_latex_equation_image(equations.equations[exmark_id])
 end
 
 function hologram_math_preview.inspect_equation_table()

@@ -44,7 +44,9 @@ M.parse_latex = function(equation)
 	end
 
 	local cwd = vim.fn.fnamemodify(document_name, ":h")
+
 	local png_result = vim.fn.tempname()
+
 	vim.fn.jobstart(
 		-- "latex  --interaction=nonstopmode --output-dir=" .. cwd .. " --output-format=dvi " .. document_name,
 		"tectonic "
@@ -57,7 +59,7 @@ M.parse_latex = function(equation)
 				vim.fn.jobstart("pdftocairo -transp -singlefile " .. document_name .. ".pdf -png " .. png_result, {
 					cwd = vim.fn.fnamemodify(document_name, ":h"),
 					on_exit = function()
-						print(vim.inspect(equation))
+						-- print(vim.inspect(equation))
 						print(document_name .. "generated")
 						print(png_result .. "generated")
 						equation.imagepath = png_result .. ".png"
