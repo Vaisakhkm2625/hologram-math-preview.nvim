@@ -24,9 +24,10 @@ function M.extract_all_equations()
 	local language_tree = vim.treesitter.get_parser(buf, "latex")
 	local syntax_tree = language_tree:parse()
 	local root = syntax_tree[1]:root()
+  local start_row, _, end_row, _ = root:range()
 	local inline_formula_query = vim.treesitter.query.parse("latex", "(inline_formula) @inf")
 
-	for id, match, metadata in inline_formula_query:iter_matches(root, buf, root:start(), root:end_()) do
+	for id, match, metadata in inline_formula_query:iter_matches(root, buf, start_row, end_row) do
 		local eq = {}
 		eq.equation = vim.treesitter.get_node_text(match[1], buf)
 		local ir, ic, fr, fc = match[1]:range()

@@ -40,6 +40,7 @@ function hologram_math_preview.show_all_eq()
 	-- print(vim.inspect(equations.equations[1].current_equation))
 	for _, eq in ipairs(equations.equations) do
 		createlatex.show_latex_equation_image(eq)
+    vim.wait(10)
 	end
 end
 

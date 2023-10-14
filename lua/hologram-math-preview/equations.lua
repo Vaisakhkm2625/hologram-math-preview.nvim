@@ -29,6 +29,11 @@ M.add = function(buf, sr, sc, er, ec)
 
 	eq.location = { sr, sc, er, ec }
 
+  local line_count = vim.api.nvim_buf_line_count(0)
+  if sr+1 == line_count then
+      vim.api.nvim_buf_set_lines(0, -1, -1, false, {""})
+    end
+
 	--set extmark
 	vim.api.nvim_buf_set_extmark(buf, M.namespace, sr, sc, { id = eq.id, end_row = er, end_col = ec })
 
