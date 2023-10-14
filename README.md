@@ -1,6 +1,10 @@
-Archiving this project....
+# Archiving notice
+Consider project archived (i am not archving it as repo become read only)....
 
 As now there is a better well maintained plugin for image support for neovim, [image.nvim](https://github.com/3rd/image.nvim), i am considering porting this into it in the future... 
+
+Anyone wanted to work on this can fork this 
+if you let me know, i will add link to that for at top of this read me and archive this repo. 
 
 # hologram-math-preview.nvim
 
