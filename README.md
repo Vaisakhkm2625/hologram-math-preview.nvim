@@ -1,6 +1,13 @@
-# hologram-math-preview.nvim (⚠️ WIP)
+Archiving this project....
+
+As now there is a better well maintained plugin for image support for neovim, [image.nvim](https://github.com/3rd/image.nvim), i am considering porting this into it in the future... 
+
+# hologram-math-preview.nvim
+
 
 A simple Neovim plugin for previewing latex equations in markdown/orgmode/norg/tex files 
+
+
 
 ## demo - current progress
 
