@@ -9,15 +9,14 @@ $
     x_{d1}       & x_{d2} & x_{d3} & \dots & x_{dn}
 \end{bmatrix}
 $
+
 $
 \sqrt{\frac{4}{3}}
 $
 this is a asdfsdfa
-
 $
-\sqrt{\frac{4}{3}}
+\sqrt{\frac{5}{3}}
 $
-
 #  test copied from nabla
 
 $a^2 + b^2 + c^2$
@@ -48,7 +47,7 @@ $\alpha_{\omega}(x)$
 $\begin{matrix} x^2 & a_H \\ \frac{1}{2} & d^2 \end{matrix}$
 
 
-$\int_0^{\infty} \frac{1}{x}\, dx$
+$\int_0^{\infty} \frac{2}{x}\, dx$
 
 
 $\frac{dx}{df(x)} + \frac{dy}{df(y)}\, =\, 2$
@@ -57,9 +56,9 @@ $\frac{dx}{df(x)} + \frac{dy}{df(y)}\, =\, 2$
 $\frac{\partial x}{\partial f(x)} + \frac{\partial y}{\partial f(y)} = 2$
 
 
-$\delta (x) = 2$
+$\delta (y) = 2$
 
-$\Delta (x) + \Delta (y) = z$
+$\Delta (x) + \Alpha (y) = z$
 
 $e^{1/2} + 2 = x$
 

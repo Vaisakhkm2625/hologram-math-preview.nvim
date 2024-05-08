@@ -45,7 +45,15 @@ M.parse_latex = function(equation)
 
 	local cwd = vim.fn.fnamemodify(document_name, ":h")
 
+	if equation.document_name then
+		document_name = equation.document_name
+	end
+
 	local png_result = vim.fn.tempname()
+
+	if equation.imagepath then
+		png_result = vim.fn.fnamemodify(equation.imagepath, ":r")
+	end
 
 	vim.fn.jobstart(
 		-- "latex  --interaction=nonstopmode --output-dir=" .. cwd .. " --output-format=dvi " .. document_name,
@@ -69,8 +77,6 @@ M.parse_latex = function(equation)
 			end,
 		}
 	)
-	-- TODO: for debuging
-
 	return png_result .. ".png"
 end
 
@@ -84,7 +90,7 @@ M.show_latex_equation_image = function(equation)
 end
 
 M.update_latex_equation_image = function(equation)
-	equation.image:delete(0, { free = true })
+	-- equation.image:delete(0, { free = true })
 	local imagepath = M.parse_latex(equation)
 	equation.image = require("hologram.image"):new(imagepath, {})
 	equation.image:display(equation.location[3] + 1, 0, equation.buf, {})

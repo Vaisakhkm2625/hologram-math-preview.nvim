@@ -44,7 +44,7 @@ end
 
 M.remove = function(equation)
 	vim.api.nvim_buf_del_extmark(equation.buf, M.namespace, equation.id)
-	equation.image:delete(0, { free = true })
+	equation.image:delete(0, { free = false })
 end
 
 M.update_equation = function(equation)
