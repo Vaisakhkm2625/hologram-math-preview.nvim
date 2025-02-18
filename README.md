@@ -1,4 +1,10 @@
 # Archiving notice
+
+Update: Floke(👑) added supported for Tectonic in his [`shack.nvim` ](https://github.com/folke/snacks.nvim) plugin...
+
+https://github.com/folke/snacks.nvim/discussions/1253#discussioncomment-12229969 (🤯 he added supported and replied to be with in 1h.. what a legend..)
+
+---
 Consider project archived (i am not archving it as repo become read only)....
 
 As now there is a better well maintained plugin for image support for neovim, [image.nvim](https://github.com/3rd/image.nvim), i am considering porting this into it in the future... 
