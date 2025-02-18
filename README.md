@@ -1,18 +1,18 @@
-# hologram-math-preview.nvim 
-
-## Archiving notice
+# Archival notice
 
 Update: Floke(👑) added supported for Tectonic in his [`shack.nvim` ](https://github.com/folke/snacks.nvim) plugin...
 
 https://github.com/folke/snacks.nvim/discussions/1253#discussioncomment-12229969 (🤯 he added supported and replied to me with in 1h.. what a legend..)
 
 ---
-Consider project archived (i am not archving it as repo become read only)....
+<details> 
+<summary>Consider project archived (i am not archving it as repo become read only)....</summary>
 
 As now there is a better well maintained plugin for image support for neovim, [image.nvim](https://github.com/3rd/image.nvim), i am considering porting this into it in the future... 
 
 Anyone wanted to work on this can fork this 
 if you let me know, i will add link to that for at top of this read me and archive this repo. 
+</details> 
 
 # hologram-math-preview.nvim
 
