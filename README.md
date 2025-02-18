@@ -1,4 +1,6 @@
-# Archiving notice
+# hologram-math-preview.nvim 
+
+## Archiving notice
 
 Update: Floke(👑) added supported for Tectonic in his [`shack.nvim` ](https://github.com/folke/snacks.nvim) plugin...
 
