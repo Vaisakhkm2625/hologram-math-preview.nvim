@@ -1,8 +1,8 @@
 # Archival notice
 
-Update: Floke(👑) added supported for Tectonic in his [`shack.nvim` ](https://github.com/folke/snacks.nvim) plugin...
+Update: Floke(👑) added support for `tectonic` in his [`shack.nvim` ](https://github.com/folke/snacks.nvim) plugin...
 
-https://github.com/folke/snacks.nvim/discussions/1253#discussioncomment-12229969 (🤯 he added supported and replied to me with in 1h.. what a legend..)
+https://github.com/folke/snacks.nvim/discussions/1253#discussioncomment-12229969 (🤯 he added support and replied to me with in 1h.. what a legend..)
 
 ---
 <details> 
